@@ -1,6 +1,5 @@
 package myanswers;
 
-import CtCILibrary.TreeNode;
 
 public class LeastCommonAncestor {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -10,7 +9,7 @@ public class LeastCommonAncestor {
     public NodeAndCount lca(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) return new NodeAndCount(null,0);
         int thisNodeCount = 0;
-        if (root.data == p.data || root.data == q.data) {
+        if (root.val == p.val || root.val == q.val) {
             thisNodeCount++;
         }
 

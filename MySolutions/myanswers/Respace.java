@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import CtCILibrary.AssortedMethods;
 
 /**
  * Created by smridul on 6/6/18.
@@ -18,7 +17,7 @@ public class Respace {
     public void correctTheString() {
 
 
-        HashSet<String> dictionary = AssortedMethods.getWordListAsHashSet();
+        HashSet<String> dictionary = null;//AssortedMethods.getWordListAsHashSet();
         String input = "jesslookedjustliketimherbrother";
 
         //    input = "xyz";

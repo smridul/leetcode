@@ -3,7 +3,6 @@ package myanswers;
 import org.junit.Test;
 import org.junit.experimental.max.MaxHistory;
 
-import Q7_10_Minesweeper.Cell;
 
 /**
  * Created by smridul on 1/17/19.

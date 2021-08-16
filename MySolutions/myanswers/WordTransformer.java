@@ -3,6 +3,7 @@ package myanswers;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -207,6 +208,28 @@ class SearchNode {
         this.node = node;
         this.parentNode = parentNode;
     }
+}
+
+
+class Graph {
+    public ArrayList<Node> nodes = new ArrayList<>();
+    public HashMap<String, Node> nodesLookup = new HashMap<>();
+}
+
+class Node {
+    public String name;
+    public boolean visited;
+    public ArrayList<Node> children = new ArrayList<>();
+
+    public Node(String name) {
+        this.name = name;
+    }
+}
+
+class MaxSumPair {
+    int sum;
+    int startIndex;
+    int rightIndex;
 }
 
 

@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
-import CtCILibrary.AssortedMethods;
 
 /**
  * Created by smridul on 6/4/18.
@@ -20,7 +19,7 @@ public class ShortestDistanceTwoWords {
                 "0", "4", "cat"};
 
 
-        array = AssortedMethods.getLongTextBlobAsStringList();
+        //array = AssortedMethods.getLongTextBlobAsStringList();
 
 
 

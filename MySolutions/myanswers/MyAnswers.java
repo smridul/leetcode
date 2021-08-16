@@ -3,7 +3,7 @@ package myanswers;
 import org.junit.Test;
 
 import java.util.*;
-
+/*
 public class MyAnswers {
 
     public int calls = 0;
@@ -368,18 +368,18 @@ public class MyAnswers {
     public void questionStackOfBoxes() {
 
 
-      /*  Box b1 = new Box(4, 2, 4);
-        Box b2 = new Box(2, 1, 1);
-        Box b3 = new Box(5, 3, 4);
-        Box b4 = new Box(6, 3, 8);
-        ArrayList<Box> boxes = new ArrayList<>();
-        boxes.add(b1);
-        boxes.add(b2);
-        boxes.add(b3);
-        boxes.add(b4);
+//        Box b1 = new Box(4, 2, 4);
+//        Box b2 = new Box(2, 1, 1);
+//        Box b3 = new Box(5, 3, 4);
+//        Box b4 = new Box(6, 3, 8);
+//        ArrayList<Box> boxes = new ArrayList<>();
+//        boxes.add(b1);
+//        boxes.add(b2);
+//        boxes.add(b3);
+//        boxes.add(b4);
 
 
-*/
+
 
         Box[] boxList = { new Box(6, 4, 4), new Box(8, 6, 2), new Box(5, 3, 3), new Box(7, 8, 3), new Box(4, 2, 2), new Box(9, 7, 3)};
 		ArrayList<Box> boxes = new ArrayList<Box>();
@@ -1024,12 +1024,12 @@ class MaxSumPair {
     public int width;
     public int depth;
 
-   /* public Box(int h, int w, int d) {
-        this.depth = d;
-        this.height = h;
-        this.width = w;
-    }
-    */
+//    public Box(int h, int w, int d) {
+//        this.depth = d;
+//        this.height = h;
+//        this.width = w;
+//    }
+
 
     // book constructor
     public Box(int w, int h, int d) {
@@ -1054,3 +1054,4 @@ class BoxComparator implements Comparator<Box> {
         return y.height - x.height;
     }
 }
+*/
