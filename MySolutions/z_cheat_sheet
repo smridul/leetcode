@@ -1,0 +1,10 @@
+* finding the sign of a number
+* flipping the sign without using ~operator
+* flipping the sign using ~operator
+* negateOptimized
+* boundaries of number represented as a integer in java
+* swapping wihout using temp variable of int and char
+* number remain unchanged when xoring with 0\
+* xor is transtive operation
+* a ^  0 = unchanged
+* a ^ 1 = flipped
