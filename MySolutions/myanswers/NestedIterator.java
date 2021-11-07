@@ -43,6 +43,13 @@ public class NestedIterator implements Iterator<Integer> {
 class NestedInteger {
     private Integer value;
     private List<NestedInteger> list;
+    public NestedInteger(int v){
+        value = v;
+    }
+
+    public NestedInteger(List<NestedInteger> list){
+        this.list = list;
+    }
 
     public boolean isInteger() {
         return value != null;
