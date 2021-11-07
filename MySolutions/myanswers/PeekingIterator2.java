@@ -38,6 +38,6 @@ public class PeekingIterator2 implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return peekval == null;
+        return peekval != null;
     }
 }
