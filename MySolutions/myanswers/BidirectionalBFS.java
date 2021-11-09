@@ -96,7 +96,8 @@ public class BidirectionalBFS {
             }
             node = queue.poll();
         }
-        queue.add(null);
+        queue.add(null); // this will cause endless loop if node is not found. see how i handled this in
+        //bfslevel printing class. Add null only if queue not empty
         return null;
     }
 
