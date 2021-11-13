@@ -11,22 +11,22 @@ public class ValidParentheses {
         closingPair.put('}', '{');
         closingPair.put(']', '[');
 
-        Set<Character> opening = new HashSet<>(Arrays.asList('(', '{', '['));
-        int i = 0;
         Stack<Character> stack = new Stack<>();
         for (char c : s.toCharArray()) {
-            if (closingPair.containsValue(c) || stack.isEmpty()) {
+            if (closingPair.containsValue(c)) {
                 stack.push(c);
+            }  else if(stack.isEmpty()) {
+                return false;
             } else if(closingPair.get(c) != stack.pop()) {
                 return false;
             }
         }
         return stack.isEmpty();
-    }
 
+    }
 
     @Test
     public void test() {
-        System.out.println(isValid(")("));
+        System.out.println(isValid("(){}"));
     }
 }
