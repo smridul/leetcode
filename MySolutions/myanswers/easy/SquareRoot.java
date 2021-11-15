@@ -34,8 +34,27 @@ public class SquareRoot {
     }
 
 
+    public int mySqrtBinarySearch(int x) {
+        if (x < 2) return x;
+        int low = 2, high = x / 2;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (mid == x / mid) {
+                return mid;
+            } else if (mid < x / mid) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+
+        }
+
+        return high;
+    }
+
+
     @Test
     public void test() {
-        System.out.println(mySqrt(4));
+        System.out.println(mySqrtBinarySearch(8));
     }
 }
