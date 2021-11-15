@@ -54,6 +54,4 @@ public class GameOflife {
     private boolean isLive(int r, int c, int[][] board) {
         return board[r][c] == 1 || board[r][c] == 2;
     }
-
-
 }
