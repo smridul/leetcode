@@ -98,6 +98,10 @@ class TrieNode {
         return links[ch - 'a'];
     }
 
+    public TrieNode[] getAllChild() {
+        return links;
+    }
+
     public void put(char ch, TrieNode node) {
         links[ch - 'a'] = node;
     }
