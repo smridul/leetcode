@@ -2,6 +2,9 @@ package myanswers;
 
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class WordSearch {
     public boolean exist(char[][] board, String word) {
 
@@ -56,5 +59,10 @@ public class WordSearch {
         };
 
         System.out.println(exist(grid, "ABE"));
+
+        Set<String> ABUSIVE_ASN_SET_FOR_CLASS_07 = new HashSet<>();
+        ABUSIVE_ASN_SET_FOR_CLASS_07.add("323");
+
+        System.out.println(ABUSIVE_ASN_SET_FOR_CLASS_07.contains(""));
     }
 }
