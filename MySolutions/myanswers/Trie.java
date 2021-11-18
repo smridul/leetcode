@@ -6,7 +6,7 @@ class Trie {
 
     public Trie() {
         root = new TrieNode();
-        root.isEnd= true;
+        root.isEnd = true;
     }
 
     public void insert(String word) {
@@ -34,6 +34,22 @@ class Trie {
         return node.isEnd;
     }
 
+    public boolean searchRecursion(String word) {
+        return searchRecursionHelper(word, root);
+    }
+
+    private boolean searchRecursionHelper(String word, TrieNode node) {
+        if (word.isEmpty()) {
+            return node.isEnd;
+        }
+        char ch = word.charAt(0);
+        if (node.containsKey(ch)) {
+            return searchRecursionHelper(word.substring(1), node.get(ch));
+        } else {
+            return false;
+        }
+    }
+
     public boolean startsWith(String prefix) {
         TrieNode node = root;
         for (int i = 0; i < prefix.length(); i++) {
@@ -45,6 +61,24 @@ class Trie {
             }
         }
         return true;
+    }
+
+
+
+    public boolean startsWithRecursion(String prefix) {
+        return startsWithRecursionHelper(prefix, root);
+    }
+
+    private boolean startsWithRecursionHelper(String word, TrieNode node) {
+        if (word.isEmpty()) {
+            return true;
+        }
+        char ch = word.charAt(0);
+        if (node.containsKey(ch)) {
+            return startsWithRecursionHelper(word.substring(1), node.get(ch));
+        } else {
+            return false;
+        }
     }
 }
 
