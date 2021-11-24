@@ -2,10 +2,7 @@ package myanswers.syntaxes;
 
 import org.junit.Test;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Created by smridul on 6/23/18.
@@ -82,6 +79,18 @@ public class MyDeque {
 
         queue2.remove();
 
+    }
+
+
+    @Test
+    public void tt(){
+
+        LinkedList<Integer> qq = new LinkedList<>();
+        qq.remove();
+
+
+        Deque<Integer> dq = new ArrayDeque<>();
+        dq.add(1);
     }
 
 

@@ -98,14 +98,11 @@ public class SearchSuggestionSystem {
         return products[low].compareTo(searchWord) >= 0 ? low : -1;
     }
 
-
     @Test
     public void test() {
         String[] products = new String[]{"mobile","mouse","moneypot","monitor","mousepad"};
         String searchWord = "mouse";
         List<List<String>> result = suggestedProductsUsingBinarySearch(products, searchWord);
-        int a = 0;
-
     }
 
 }
