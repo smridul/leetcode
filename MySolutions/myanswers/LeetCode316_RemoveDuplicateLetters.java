@@ -12,35 +12,38 @@ public class LeetCode316_RemoveDuplicateLetters {
     @Test
     public void test() {
 
-        removeDuplicateLetters("bacdcbc");
+        System.out.println(removeDuplicateLetters("abacb"));
     }
 
     public String removeDuplicateLetters(String s) {
 
-        HashMap<Character, Integer> map = new HashMap<>();
+        if(s.isEmpty()){
+            return "";
+        }
+        int freq[] = new int[26];
 
-        StringBuilder ss = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (!map.containsKey(c)) {
-                ss.append(c);
-                map.put(c, i);
-            } else {
+            freq[s.charAt(i) - 'a']++;
+        }
 
-                int index = map.get(c);
+        int pos = 0;
+        int i = 0;
+        for (i = 0; i < s.length(); i++) {
 
-                // if we include this the new string is
-                String newString = ss.substring(0, index) + ss.substring(index + 1, ss.length()) + c;
-                // if not include,
-
-                if (newString.compareTo(ss.toString())<0) {
-                    map.put(c, index);
-                    ss.replace(index, index+1, "");
-                    ss.append(c);
-                }
+            if (s.charAt(i) < s.charAt(pos)) {
+                pos = i;
+            }
+            if (--freq[s.charAt(i) - 'a'] == 0) {
+                break;
             }
         }
-        return ss.toString();
+
+        if (s.charAt(pos) == s.charAt(i)) {
+            return s.charAt(pos) + removeDuplicateLetters(s.substring(i + 1).replaceAll("" + s.charAt(pos), ""));
+        } else {
+            return s.charAt(pos) + removeDuplicateLetters(s.substring(i).replaceAll("" + s.charAt(pos), ""));
+        }
+
     }
 
 }
