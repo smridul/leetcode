@@ -1,5 +1,7 @@
 package myanswers;
 
+import org.junit.Test;
+
 import java.util.*;
 
 public class TaskScheduler {
@@ -28,14 +30,13 @@ public class TaskScheduler {
         List<CharFreq> list = new ArrayList<>();
         while (!treemap.isEmpty()) {
 
-            for(Map.Entry<CharFreq, Integer> entry: treemap.entrySet()){
+            for (Map.Entry<CharFreq, Integer> entry : treemap.entrySet()) {
                 list.add(entry.getKey());
                 char ch = entry.getKey().ch;
                 stringBuilder.append(ch);
 
             }
         }
-
         return 0;
     }
 
@@ -44,7 +45,44 @@ public class TaskScheduler {
     }
 
 
+    //optimal
+    public int leastInterval1(char[] tasks, int n) {
+
+        int freq[] = new int[26];
+
+        int maxFreq = 0;
+        char maxChar = 'A';
+        for (char c : tasks) {
+            freq[c - 'A']++;
+            if(freq[c - 'A'] > maxFreq){
+                maxFreq = freq[c - 'A'];
+                maxChar = c;
+            }
+        }
+
+        int idle = (maxFreq - 1) * n;
+        for (int i = 0; i < freq.length; i++) {
+            if(i== maxChar-'A'){
+                continue;
+            }
+            int min = Math.min(maxFreq - 1, freq[i]);
+            if (idle == 0) {
+                break;
+            }
+            idle = idle - min;
+        }
+        return tasks.length + idle;
     }
+
+
+    @Test
+    public void test(){
+        char [] task = new char[]{'A', 'A', 'A', 'B', 'B', 'B'};
+        System.out.println(leastInterval1(task, 0));
+    }
+
+
+}
 
 class CharFreq {
     int count;
