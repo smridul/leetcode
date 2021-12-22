@@ -7,7 +7,6 @@ import java.util.*;
 public class AccountMerge {
 
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
-
         Map<String, String> emailToName = new HashMap<>();
         Map<String, EmailNode> emailToNode = new HashMap<>();
 
