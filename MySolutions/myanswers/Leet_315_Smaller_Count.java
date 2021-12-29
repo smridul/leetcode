@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+// old class
 public class Leet_315_Smaller_Count {
 
 
