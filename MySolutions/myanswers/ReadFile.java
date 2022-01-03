@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import static java.lang.System.exit;
+import static java.lang.System.in;
 
 import org.junit.Test;
 
@@ -14,8 +15,8 @@ public class ReadFile {
 
     public static void main(String args[]) throws IOException {
 
-        String inputFilePath = "/Users/smridul/temp/easy_all";
-        String outputFilePath = "/Users/smridul/temp/easy_all_processed";
+        String inputFilePath = "/Users/smridul/temp/last6month/targetCompanies/fb_google/google";
+        String outputFilePath = "/Users/smridul/temp/last6month/targetCompanies/fb_google/google_proc";
 
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
@@ -44,8 +45,13 @@ public class ReadFile {
         try {
             while ((sCurrentLine = bufferedReader.readLine()) != null) {
 
-
                 String trimmed = sCurrentLine.trim();
+                int index = trimmed.indexOf('.');
+                int index2 = trimmed.indexOf('%');
+
+               /* if(index!=-1 && index2==-1){
+                    trimmed = trimmed.substring(0, index);
+                }*/
 
                 int trimmedInteger = 0;
                 try {
@@ -91,11 +97,13 @@ public class ReadFile {
     @Test
     public  void test() throws IOException {
 
-        String inputFilePath = "/Users/smridul/temp/easy_all_processed";
-        String inputFilePath2 = "/Users/smridul/temp/last6month/easy_processed";
+        String inputFilePath = "/Users/smridul/temp/last6month/targetCompanies/fb_google/fb_proc";
+       String inputFilePath2 = "/Users/smridul/temp/last6month/targetCompanies/fb_google/google_proc";
+        //String inputFilePath2 = "/Users/smridul/temp/last6month/targetCompanies/mediums/fb_dd_link_mediums_uniques";
 
 
-        String outputFilePath = "/Users/smridul/temp/last6month/easy_processed_sorted";
+
+        String outputFilePath = "/Users/smridul/temp/last6month/targetCompanies/fb_google/only_fb";
 
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
@@ -152,7 +160,7 @@ public class ReadFile {
                 }
 
 
-                if (map.get(trimmedInteger) != null) {
+                if (map.get(trimmedInteger) == null) {
                     map2.put(trimmedInteger, true);
                 }
             }
