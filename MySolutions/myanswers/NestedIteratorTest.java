@@ -1,5 +1,6 @@
 package myanswers;
 
+import leetcode_classes.NestedInteger;
 import org.junit.Test;
 
 import java.util.ArrayList;

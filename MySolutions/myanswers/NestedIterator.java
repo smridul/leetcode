@@ -1,5 +1,7 @@
 package myanswers;
 
+import leetcode_classes.NestedInteger;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,7 +13,6 @@ public class NestedIterator implements Iterator<Integer> {
     int index = 0;
 
     public NestedIterator(List<NestedInteger> nestedList) {
-
         for (int i = 0; i < nestedList.size(); i++) {
             readMe(nestedList.get(i));
         }
@@ -40,26 +41,4 @@ public class NestedIterator implements Iterator<Integer> {
     }
 }
 
-class NestedInteger {
-    private Integer value;
-    private List<NestedInteger> list;
-    public NestedInteger(int v){
-        value = v;
-    }
 
-    public NestedInteger(List<NestedInteger> list){
-        this.list = list;
-    }
-
-    public boolean isInteger() {
-        return value != null;
-    }
-
-    public Integer getInteger() {
-        return value;
-    }
-
-    public List<NestedInteger> getList() {
-        return list;
-    }
-}

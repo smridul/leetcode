@@ -6,6 +6,9 @@ import java.util.Arrays;
 
 public class MinimumWindowSubstring {
 
+
+    // green book approach
+    // didn't work because not ditinct chars
     public String minWindow2(String s, String t) {
 
         int[] maxIndex = new int[s.length()];
