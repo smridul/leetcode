@@ -1,4 +1,4 @@
-package leetcode_classes;
+package myanswers;
 
 import org.junit.Test;
 
