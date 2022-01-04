@@ -42,12 +42,8 @@ public class MinimumWindowSubsequence {
 
     @Test
     public void test() {
-
-
         String s = "fgrqsqsnodwmxzkzxwqegkndaa";
         String t = "kzed";
-       // s="abcdebdde";
-        //t="bde";
         System.out.println(minWindow(s, t));
     }
 }
