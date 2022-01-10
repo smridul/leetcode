@@ -1,10 +1,10 @@
 package leetcode_classes;
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    int treeCount;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public int treeCount;
 
     TreeNode(int x) {
         val = x;
