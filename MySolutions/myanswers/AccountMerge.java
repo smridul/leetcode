@@ -6,9 +6,10 @@ import java.util.*;
 
 public class AccountMerge {
 
+    Map<String, EmailNode> emailToNode = new HashMap<>();
+
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
         Map<String, String> emailToName = new HashMap<>();
-        Map<String, EmailNode> emailToNode = new HashMap<>();
 
         for (List<String> list : accounts) {
             String name = "";
@@ -19,17 +20,13 @@ public class AccountMerge {
                     continue;
                 }
 
-                EmailNode emailNode;
                 if (!emailToName.containsKey(email)) {
                     emailToName.put(email, name);
-                    emailNode = new EmailNode(email, 0);
-                    emailToNode.put(email, emailNode);
-                } else {
-                    emailNode = emailToNode.get(email);
+                    makeSet(email);
                 }
 
                 if (i >= 2) {
-                    union(emailNode, emailToNode.get(list.get(i - 1)));
+                    union(email, list.get(i - 1));
                 }
             }
         }
@@ -37,10 +34,10 @@ public class AccountMerge {
         // nOw let generate the set
         Map<String, List<String>> ans = new HashMap();
         for (String email: emailToName.keySet()) {
-            EmailNode leader= findSet(emailToNode.get(email));
-            List<String> list = ans.getOrDefault(leader.email, new ArrayList<>());
+            String leader= findSet(email);
+            List<String> list = ans.getOrDefault(leader, new ArrayList<>());
             list.add(email);
-            ans.put(leader.email, list);
+            ans.put(leader, list);
         }
 
         for (List<String> component: ans.values()) {
@@ -81,25 +78,35 @@ public class AccountMerge {
     }
 
 
-    public void union(EmailNode node1, EmailNode node2) {
+    public void union(String node1, String node2) {
 
-        EmailNode leader1 = findSet(node1);
-        EmailNode leader2 = findSet(node2);
+        String l1 = findSet(node1);
+        String l2 = findSet(node2);
+        EmailNode leader1 = emailToNode.get(l1);
+        EmailNode leader2 = emailToNode.get(l2);
 
         if (leader1.rank > leader2.rank) {
             leader2.parent = leader1;
         } else {
-            //make leader2 as leader
             leader1.parent = leader2;
+        }
+        if(leader1.rank == leader2.rank){
+            // assume leader2 as parent in case of tie
             leader2.rank++;
         }
     }
 
-    public EmailNode findSet(EmailNode node) {
+    public String findSet(String n) {
+        EmailNode node = emailToNode.get(n);
         while (node.parent != node) {
             node = node.parent;
         }
-        return node;
+        return node.email;
+    }
+
+    public void makeSet(String email) {
+       EmailNode emailNode = new EmailNode(email, 0);
+       emailToNode.put(email, emailNode);
     }
 }
 
