@@ -218,11 +218,17 @@ class Graph {
 
 class Node {
     public String name;
+    public int val;
+    public Node next;
     public boolean visited;
     public ArrayList<Node> children = new ArrayList<>();
 
     public Node(String name) {
         this.name = name;
+    }
+
+    public Node(int val) {
+        this.val = val;
     }
 }
 
