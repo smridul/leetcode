@@ -4,10 +4,79 @@ import org.junit.Test;
 
 import java.util.*;
 
-/**
- * Created by smridul on 1/6/19.
- */
 public class Removeinvalidparen {
+
+
+    // dfs version
+
+    public List<String> removeInvalidParentheses1(String s) {
+
+        int left = 0, right = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                left++;
+            } else if (s.charAt(i) == ')') {
+                if(left == 0){
+                    right++;
+                }else{
+                    left--;
+                }
+            }
+        }
+
+        int leftToRemove = left;
+        int rightToRemove = right;
+
+
+        List<String> res = new ArrayList<>();
+        dfs(s, 0, res, "", leftToRemove, rightToRemove, 0, -1);
+        return new ArrayList<String>(res);
+
+    }
+
+
+    public void dfs(String s, int i, List<String> res, String path, int leftToRemove, int rightToRemove,
+                    int open, int lastSelected) {
+        if (leftToRemove < 0 || rightToRemove < 0 || open < 0) {
+            return;
+        }
+        if (i == s.length()) {
+            if (leftToRemove == 0 && rightToRemove == 0 && open == 0) {
+                res.add(path);
+            }
+            return;
+        }
+
+        char c = s.charAt(i);
+
+        if (c == '(') {
+            // remove it
+            dfs(s, i + 1, res, path, leftToRemove - 1, rightToRemove, open, lastSelected);
+            // add it
+
+            if(i==0 || s.charAt(i) != s.charAt(i-1) || lastSelected == i-1) {
+                dfs(s, i + 1, res, path + c, leftToRemove, rightToRemove, open + 1, i);
+            }
+
+        } else if (c == ')') {
+            //remove it
+            dfs(s, i + 1, res, path, leftToRemove, rightToRemove - 1, open, lastSelected);
+            // add it
+            if(i==0 || s.charAt(i) != s.charAt(i-1) || lastSelected == i-1) {
+                dfs(s, i + 1, res, path + c, leftToRemove, rightToRemove, open - 1, i);
+            }
+
+        } else {
+            dfs(s, i + 1, res, path + c, leftToRemove, rightToRemove, open, i);
+        }
+
+    }
+
+
+
+
+
+
 
 
     @Test
