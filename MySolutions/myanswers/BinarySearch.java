@@ -61,7 +61,7 @@ public class BinarySearch {
      it is called lower bound
      and when element are not distinct it
      returns the first occurence of element
-     when not found in array it is returning the array.length, not -1
+     when not found in array it is returning the next bigger element index
      */
     public int lowerBound(int num[], int target) {
         int low = 0;
@@ -104,7 +104,7 @@ public class BinarySearch {
 
     /*
      * Returning prev pos index if not found
-     *
+     *to see optimized see bottom
      *  */
     public int binarySearchReturningPrevPosIndexIfNotFound(int num[], int target) {
         int low = 0;
@@ -203,5 +203,41 @@ public class BinarySearch {
         System.out.println("Testcase 15: " + binarySearchReturningPrevPosIndexIfNotFound(num, 31));
         System.out.println("Testcase 16: " + binarySearchReturningPrevPosIndexIfNotFound(num, 0));
 
+
+        System.out.println("Testcase 12: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 6));
+        System.out.println("Testcase 13: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 7));
+        System.out.println("Testcase 14: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 15));
+        System.out.println("Testcase 15: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 31));
+        System.out.println("Testcase 16: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 0));
+
+    }
+
+
+
+    public int binarySearchReturningPrevPosIndexIfNotFound2(int num[], int target) {
+        int low = -1;
+        int high = num.length - 1;
+
+        while (low < high) {
+            int mid = low + (high - low) / 2 +1;
+
+            if (num[mid] > target) {
+                high = mid - 1;
+            } else if (num[mid] < target) {
+                low = mid;
+            } else {
+                // equal element case
+                high = mid-1;
+            }
+        }
+
+        //either low is answer or low+1
+
+
+        if(low==-1 || num[low] < target){
+            return low;
+        }else{
+            return low+1;
+        }
     }
 }
