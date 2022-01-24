@@ -79,6 +79,7 @@ public class PostOrderTraversal {
             if(stack.peek().left == curr){
                 curr = stack.pop();
                 stack.push(curr);
+                // actually above operations means noop
                 curr = curr.right;
             } else{
                 curr = stack.pop();
