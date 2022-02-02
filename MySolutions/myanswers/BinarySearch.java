@@ -234,12 +234,10 @@ public class BinarySearch {
         }
 
         //either low is answer or low+1
-
-
-        if(low==-1 || num[low] < target){
-            return low;
-        }else{
+        if(low!=num.length-1 && num[low+1] == target){
             return low+1;
+        }else{
+            return low;
         }
     }
 
