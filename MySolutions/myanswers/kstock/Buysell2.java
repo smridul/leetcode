@@ -1,5 +1,10 @@
 package myanswers.kstock;
 
+import org.junit.Test;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class Buysell2 {
     public int maxProfit(int[] nums) {
 
@@ -42,6 +47,12 @@ public class Buysell2 {
         }
 
         return max;
+    }
 
+
+    @Test
+    public void test(){
+        int arr[] = new int[]{1, 2,3, 4,5};
+        System.out.println(maxProfit(arr));
     }
 }
