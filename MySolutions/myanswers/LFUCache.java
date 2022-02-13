@@ -120,7 +120,6 @@ class DoublyList {
         node.next = null;
     }
 
-
 }
 
 class DoublyNode {
