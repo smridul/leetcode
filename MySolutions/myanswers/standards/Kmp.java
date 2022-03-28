@@ -10,7 +10,14 @@ public class Kmp {
         prefix[0] = 0;
         int k = 0;
         for (int i = 1; i < pattern.length(); i++) {
-            while (k > 0 && pattern.charAt(i) != pattern.charAt(prefix[i])) {
+            //k-1 character prefix end index
+            // k is next character
+            /*
+             while (k > 0 && pattern.charAt(i) != pattern.charAt(prefix end char  + 1)) {
+                k = prefix[prefix end char];
+            }
+             */
+            while (k > 0 && pattern.charAt(i) != pattern.charAt(k)) {
                 k = prefix[k - 1];
             }
 
@@ -37,7 +44,7 @@ public class Kmp {
             if (k == pattern.length()) {
                 //pattern matched at i
                 System.out.println("Matched at " + (i - pattern.length() + 1));
-                k = prefix[k - 1];
+                k = prefix[k - 1]; // this is unusual to think but is done to get next match in run
             }
         }
 
@@ -47,10 +54,17 @@ public class Kmp {
     @Test
     public void test() {
 
-        //search("babbababaabcbababa", "ababa");
+        search("babbababaabcbababa", "ababa");
         search("aaaaa", "aaa");
 
     }
+
+
+
+
+
+
+
 
 
 }

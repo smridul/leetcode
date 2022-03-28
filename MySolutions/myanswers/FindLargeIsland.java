@@ -120,6 +120,7 @@ public class FindLargeIsland {
 }
 
 
+// see FindIsland2. we dont need this class
 class CellNode {
     String cell;
     int rank;

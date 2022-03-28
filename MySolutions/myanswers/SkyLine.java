@@ -16,6 +16,10 @@ public class SkyLine {
 
         getSkyline(bb);
 
+        StringBuilder sc  = new StringBuilder();
+        sc.append(1);
+        System.out.println(sc.toString());
+
     }
 
     public List<int[]> getSkyline(int[][] buildings) {
