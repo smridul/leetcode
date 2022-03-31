@@ -8,6 +8,8 @@ public class MaxAverage {
 
 
         int sum=0;
+
+
         double max= -Double.MAX_VALUE;
         for(int i=0; i < nums.length; i++){
 

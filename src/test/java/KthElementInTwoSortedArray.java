@@ -1,4 +1,4 @@
-import org.junit.Test;
+package leetcode.MySolutions;
 
 public class KthElementInTwoSortedArray {
 
@@ -103,7 +103,7 @@ public class KthElementInTwoSortedArray {
         return -1;
     }
 
-    @Test
+
     public void test() {
         int[] array1 = new int[]{1, 2};
         int[] array2 = new int[]{3, 4, 11, 12};
