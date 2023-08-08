@@ -96,7 +96,7 @@ public class BinarySearch {
 
             if (num[mid] > target) {
                 high = mid;
-            } else {
+            } else  {
                 low = mid + 1;
             }
         }
@@ -221,7 +221,7 @@ public class BinarySearch {
         int high = num.length - 1;
 
         while (low < high) {
-            int mid = low + (high - low) / 2 +1;
+            int mid = low + (high - low+1) / 2;
 
             if (num[mid] > target) {
                 high = mid - 1;

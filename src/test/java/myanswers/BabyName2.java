@@ -35,7 +35,6 @@ class NameFreq {
 }
 
 
-
 public class BabyName2 {
     public ArrayList<NameFreq> processUsingGraphApproach(ArrayList<Synonym> synonyms, ArrayList<NameFreq> nameFreqs) {
 
