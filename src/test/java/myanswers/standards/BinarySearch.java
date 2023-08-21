@@ -25,7 +25,12 @@ public class BinarySearch {
         }
         // return num[low] < target ? low+1 : low; this is correct too
 
-        return num[low] >= target ? low : low + 1; //  this is correct too
+        //return num[low] >= target ? low : low + 1; //  this is correct too
+
+
+        return target > num[high] ? high+1 : high; // i find this more intutive
+        // during my revision course
+
     }
 
 
@@ -49,6 +54,52 @@ public class BinarySearch {
             }
         }
         return num[low] > target ? low - 1 : low;
+    }
+    @Test
+    public void test29() {
+
+
+
+    }
+    public int binarySearchReturningPrevPosIndexIfNotFound2(int num[], int target) {
+        int low = -1;
+        int high = num.length - 1;
+
+        while (low < high) {
+            int mid = low + (high - low + 1) / 2;
+
+            if (num[mid] >= target) {
+                high = mid-1; // we want to jump to left when match and also skip
+            } else {
+                low = mid;
+            }
+        }
+        return low < num.length -1 && num[low + 1]  == target ? low+1 : low;
+    }
+
+    public int binarySearchReturningPrevPosIndexIfNotFound3(int num[], int target) {
+        int low = 0;
+        int high = num.length - 1;
+
+        while (low < high) {
+            int mid = low + (high - low + 1) / 2;
+
+            if (num[mid] >= target) {
+                high = mid-1; // we want to jump to left when match and also skip
+            } else {
+                low = mid;
+            }
+        }
+
+        if (num[low] > target) {
+            return low - 1;
+        } else if (num[low] == target) {
+            return low;
+        } else if (low < num.length - 1 && num[low + 1] == target) {
+            return low + 1;
+        } else {
+            return low;
+        }
     }
 
 
@@ -84,6 +135,31 @@ public class BinarySearch {
         System.out.println("Testcase 15: " + binarySearchReturningPrevPosIndexIfNotFound(num, 31)); //9
         System.out.println("Testcase 16: " + binarySearchReturningPrevPosIndexIfNotFound(num, 0)); // -1
 
+        System.out.println("===============================================");
+
+
+        System.out.println("Testcase 16: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 6)); //2
+        System.out.println("Testcase 18: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 7)); //4
+        System.out.println("Testcase 19: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 15)); //6
+        System.out.println("Testcase 20: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 31)); //9
+        System.out.println("Testcase 21: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 0)); // -1
+
+
+        System.out.println("===============================================");
+        System.out.println("Testcase 22: " + binarySearchReturningPrevPosIndexIfNotFound3(num, 6)); //2
+        System.out.println("Testcase 23: " + binarySearchReturningPrevPosIndexIfNotFound3(num, 7)); //4
+        System.out.println("Testcase 24: " + binarySearchReturningPrevPosIndexIfNotFound3(num, 15)); //6
+        System.out.println("Testcase 25: " + binarySearchReturningPrevPosIndexIfNotFound3(num, 31)); //9
+        System.out.println("Testcase 26: " + binarySearchReturningPrevPosIndexIfNotFound3(num, 0)); // -1
+
+
+
+        System.out.println("===============================================");
+        num = new int[]{6, 6};
+        //  {0, 1, 2, 3};
+        System.out.println("Testcase 27: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 6)); // 0
+        System.out.println("Testcase 28: " + binarySearchReturningPrevPosIndexIfNotFound3(num, 6)); // 0
+
     }
 
 
@@ -114,6 +190,23 @@ public class BinarySearch {
         return num[low] < target ? low+1 : low;
     }
 
+    public int lowerBound2(int num[], int target) {
+        int low = 0;
+        int high = num.length;
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+
+            if (num[mid] < target) {
+                low = mid +1;
+            } else {
+                high = mid;
+            }
+        }
+
+        return high;
+    }
+
     @Test
     public void test3() {
 
@@ -134,6 +227,22 @@ public class BinarySearch {
 
         //0
         System.out.println("Testcase 9: " + lowerBound(num, -1));
+
+
+        //2 first occurence of 6
+        System.out.println("Testcase 10: " + lowerBound2(num, 6));
+
+        //6
+        System.out.println("Testcase 11: " + lowerBound2(num, 15));
+
+        //10
+        System.out.println("Testcase 12: " + lowerBound2(num, 31));
+
+        //2
+        System.out.println("Testcase 13: " + lowerBound2(num, 5));
+
+        //0
+        System.out.println("Testcase 14: " + lowerBound2(num, -1));
     }
 
 
@@ -159,27 +268,42 @@ it returns the next greater element and never the equal one
         return num[low] > target ? low : low + 1;
     }
 
+    public int upperBound2(int num[], int target) {
+        int low = 0;
+        int high = num.length;
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+
+            if (target >= num[mid]) {
+                low = mid+1;
+            } else {
+                high = mid;
+            }
+        }
+        return high;
+    }
+
 
     @Test
     public void test4() {
 
         int []  num = new int[]{1, 4, 6, 6, 6, 9, 15, 19, 25, 30};
+        System.out.println("Testcase 8: " + upperBound(num, 0)); //0
         System.out.println("Testcase 9: " + upperBound(num, 5)); //2
         System.out.println("Testcase 9.1: " + upperBound(num, 6));//5
         System.out.println("Testcase 10: " + upperBound(num, 15));//7
         System.out.println("Testcase 11: " + upperBound(num, 31));//10
+
+
+        System.out.println("Testcase 8: " + upperBound2(num, 0)); //0
+        System.out.println("Testcase 9: " + upperBound2(num, 5)); //2
+        System.out.println("Testcase 9.1: " + upperBound2(num, 6));//5
+        System.out.println("Testcase 10: " + upperBound2(num, 15));//7
+        System.out.println("Testcase 11: " + upperBound2(num, 31));//10
     }
-/*
 
 
 
 
-main method
-
-
-
-
-
-
- */
 }

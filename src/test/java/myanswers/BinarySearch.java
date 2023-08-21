@@ -242,4 +242,15 @@ public class BinarySearch {
     }
 
 
+
+    @Test
+    public void test3() {
+
+
+        int[] num = new int[]{5};
+        System.out.println("Testcase 12: " + binarySearchReturningPrevPosIndexIfNotFound2(num, 1));
+
+    }
+
+
 }

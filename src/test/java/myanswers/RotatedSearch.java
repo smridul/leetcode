@@ -18,6 +18,13 @@ public class RotatedSearch {
 
          a = new int[]{4,5,6,7,8,1,2,3};
         System.out.print(distinctVersion2(a, 8));
+
+
+
+        a=new int[]{2,2,2,3,1};
+        System.out.print(searchNonDistinct(a, 1));
+
+
     }
 
     public static int binarySearch(int[] nums, int target) {
@@ -109,5 +116,102 @@ public class RotatedSearch {
             }
         }
         return -1;
+    }
+
+    public int searchtest(int[] nums, int target) {
+        int low =0;
+        int high = nums.length-1;
+        while(low < high){
+            int mid = low + (high-low)/2;
+            if(nums[mid]== target){
+                return mid;
+            }
+            if (nums[mid] >= nums[low] ){
+                //left set is normal
+                if(target >= nums[low] && target <= nums[mid]){
+                    high = mid-1;
+                }else{
+                    low = mid+1;
+                }
+            }else{
+                // right set is normal
+                if(target > nums[mid] && target <= nums[high]){
+                    low = mid+1;
+                }else{
+                    high =mid-1;
+                }
+
+            }
+        }
+        return nums[low]==target ? low : -1;
+    }
+
+
+
+     boolean search1(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length-1;
+
+        while(low < high){
+            int mid = low +(high-low)/2;
+            if(nums[mid] == target){
+                return true;
+            }
+            if(nums[mid] >= nums[low] && nums[mid]!= nums[high]){
+                // left is normal
+                if(target >= nums[low] && target <= nums[mid]){
+                    high = mid-1;
+                }else{
+                    low = mid+1;
+                }
+            }else if(nums[high] >= nums[mid] && nums[mid]!= nums[low]){
+                // right set is normal
+                if(target >= nums[mid] && target <= nums[high]){
+                    low = mid+1;
+                }else{
+                    high =mid-1;
+                }
+            } else if(nums[high] == nums[mid] && nums[mid]== nums[low]){
+                low++;
+                high--;
+            }
+        }
+
+        return nums[low] == target;
+    }
+
+
+
+    public boolean searchNonDistinct(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length-1;
+
+        while(low < high){
+            int mid = low +(high-low)/2;
+            if(nums[mid] == target){
+                return true;
+            }
+
+            if(nums[high] == nums[mid] && nums[mid]== nums[low]){
+                low++;
+                high--;
+            } else if(nums[mid] >= nums[low]){
+                // left is normal
+                if(target >= nums[low] && target <= nums[mid]){
+                    high = mid-1;
+                }else{
+                    low = mid+1;
+                }
+            }else {
+                // right set is normal
+                if(target >= nums[mid+1] && target <= nums[high]){
+                    low = mid+1;
+                }else{
+                    high =mid-1;
+                }
+            }
+        }
+
+        return nums[low] == target;
     }
 }
