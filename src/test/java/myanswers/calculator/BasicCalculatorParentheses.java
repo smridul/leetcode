@@ -3,6 +3,10 @@ package myanswers.calculator;
 import javafx.util.Pair;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class BasicCalculatorParentheses {
 
     // recursion o(n^2) find matching ')' and pass the substring concept
@@ -115,15 +119,17 @@ public class BasicCalculatorParentheses {
         return eval ;
     }
 
+
+
+
     @Test
     public void test() {
 
         System.out.println(calculate22("2-(5+5-2)/3+(2+8)"));
         System.out.println(calculate21("2-(5+5-2)/3+(2+8)"));
 
+
     }
-
-
 
 
 
@@ -187,6 +193,8 @@ public class BasicCalculatorParentheses {
             }
             index++;
         }
+
+    
         return new Pair<>(res + sign*num, index);
     }
 }

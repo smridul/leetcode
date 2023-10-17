@@ -164,7 +164,72 @@ public class CalculatorII {
 
     @Test
     public void test() {
-        System.out.println(calculate3("3+2*2"));
+        System.out.println(calculate6(" 3+5 / 2 "));
+    }
+
+
+
+    public int calculate6(String s) {
+
+
+
+        int result=0;
+        int lastoperand = 0;
+        int currentoperand = 0;
+        char operator = '+';
+        int sign=1;
+        char[] arr = s.toCharArray();
+        for (int i=0; i <= arr.length; i++){
+            if(i < arr.length && Character.isDigit(arr[i])){
+                currentoperand = currentoperand * 10 + (arr[i]-'0');
+            }else if(i < arr.length && Character.isWhitespace(arr[i])){
+                continue;
+            }else{
+                currentoperand = sign * currentoperand;
+                // we have encountered a operator ;
+                // if last operator was  * or /
+
+                if(operator == '*'){
+                    currentoperand = lastoperand * currentoperand;
+                } else if ( operator == '/'){
+                    currentoperand = lastoperand / currentoperand;
+                }else{
+                    // last operstor was + or -
+                    // do nothing
+                }
+                lastoperand = currentoperand;
+                currentoperand = 0;
+
+
+                if(i == arr.length){
+                    // reached the end of string
+                    result = result + lastoperand;
+                    break;
+                }
+
+                // if this operator is + or -
+                char thisone = arr[i];
+
+                if(thisone == '+'){
+                    result = result + lastoperand;
+                    sign = 1;
+                }else if (thisone == '-'){
+                    result = result + lastoperand;
+                    sign = -1;
+                } else if (thisone == '*'){
+                    operator = '*';
+                    sign = 1;
+                } else if (thisone == '/'){
+                    operator = '/';
+                    sign = 1;
+                }
+
+
+            }
+
+        }
+        return result;
+
     }
 }
 

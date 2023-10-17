@@ -4,11 +4,148 @@ import org.junit.Test;
 
 import java.util.*;
 
-public class AccountMerge {
+public class
+AccountMerge {
+
+
+    public List<List<String>> accountsMerge(List<List<String>> accounts) {
+
+
+        Map<String, String> nameNode = new HashMap<>();
+
+        int counter=0;
+        for(List<String> list :  accounts){
+            String name = list.get(0) + ":"+ counter;
+            nameNode.put(name, name);
+            counter++;
+        }
+        counter=0;
+        Map<String, String> map = new HashMap<>();
+        for (List<String> list :  accounts){
+            String group = list.get(0) + ":" + counter;
+
+            for(int i=1; i< list.size(); i++){
+
+                String email = list.get(i);
+                if (map.containsKey(email)){
+                    String name = map.get(email);
+                    union(name, group, nameNode);
+
+                }else{
+                    map.put(email, group);
+                }
+            }
+            counter++;
+        }
+
+
+        Map<String, List<String>> output = new HashMap<>();
+        for(Map.Entry<String, String> entry : map.entrySet()){
+
+            String email = entry.getKey();
+            String groupName = entry.getValue();
+            groupName = findParent(nameNode, groupName);
+            if(output.containsKey(groupName)){
+                List<String> list = output.get(groupName);
+                list.add(email);
+            }else{
+                List<String> list = new ArrayList<>();
+                list.add(email);
+                output.put(groupName, list);
+            }
+        }
+
+        List<List<String>> answer = new ArrayList<>();
+
+        for(Map.Entry<String, List<String>> entry : output.entrySet()){
+
+            String group = entry.getKey();
+            group=  group.substring(0, group.indexOf(":"));
+            List<String> list = entry.getValue();
+            Collections.sort(list);
+
+            List<String> outputList = new ArrayList<>();
+            outputList.add(group);
+            outputList.addAll(list);
+            answer.add(outputList);
+        }
+        return answer;
+    }
+
+
+    void union(String str1, String str2, Map<String, String> nameNode){
+
+        String parent1 = findParent(nameNode, str1);
+        String parent2 = findParent(nameNode, str2);
+        if(!parent1.equals(parent2)){
+            nameNode.put(parent1, parent2);
+        }
+
+    }
+
+//    public String findParent( Map<String, String> nameNode, String n) {
+//        while (nameNode.get(n) != n) {
+//            n= nameNode.get(n);
+//        }
+//        return nameNode.get(n);
+//    }
+
+    public String findParent( Map<String, String> nameNode, String n) {
+        if(!nameNode.get(n).equals(n)){
+            nameNode.put(n, findParent(nameNode, nameNode.get(n)));
+        }
+        return nameNode.get(n);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     Map<String, EmailNode> emailToNode = new HashMap<>();
 
-    public List<List<String>> accountsMerge(List<List<String>> accounts) {
+    public List<List<String>> accountsMerge2(List<List<String>> accounts) {
         Map<String, String> emailToName = new HashMap<>();
 
         for (List<String> list : accounts) {

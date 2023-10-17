@@ -116,6 +116,13 @@ public class FindAllPeopleWithSecret {
         System.out.println(findAllPeople(5, meets, 3));
 
 
+        Comparator<int[]> comparator =  new Comparator<>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return 0;
+            }
+        };
+
     }
 
 
