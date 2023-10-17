@@ -105,5 +105,86 @@ public class PacificAtlanticWater {
             }
             System.out.println();
         }
+
+
+        List<List<Integer>> res2 = pacificAtlantic2(grid);
+        for (List<Integer> list : res2) {
+            for (int i : list) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+
+    List<List<Integer>> answer = new ArrayList<>();
+    public List<List<Integer>> pacificAtlantic2(int[][] heights) {
+
+        Queue<int[]> queue =  new LinkedList<>();
+        int[][] visited = new int[heights.length][heights[0].length];
+
+        for(int i=0; i < heights[0].length; i++){
+            queue.offer(new int[]{0, i});
+            visited[0][i] = -1;
+        }
+
+        for(int i=1; i < heights.length; i++){
+            queue.offer(new int[]{i, 0});
+            visited[i][0] = -1;
+        }
+
+
+        System.out.println("===========================================");
+        bfs(heights, queue, 1, visited, -2);
+
+        queue =  new LinkedList<>();
+
+        for(int i=0; i < heights[0].length; i++){
+            queue.offer(new int[]{heights.length-1, i});
+            visited[heights.length-1][i] = -2;
+        }
+
+        for(int i=0; i < heights.length-1; i++){
+            queue.offer(new int[]{i, heights[0].length-1});
+            visited[i][heights.length-1] = -2;
+        }
+
+        bfs(heights, queue, 2, visited, -1);
+
+        return answer;
+
+    }
+
+
+
+
+
+
+    public void bfs(int [][] grid, Queue<int[]> queue, int index, int[][] visited, int toFind){
+
+
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            while(size-- > 0 ){
+                int[] cell = queue.poll();
+                int row =cell[0];
+                int col = cell[1];
+                if(visited[row][col]== toFind){
+                    answer.add(Arrays.asList(row, col));
+                }
+                visited[row][col] = -index;
+                for(int[] dir: dirs){
+                    int newRow = cell[0] + dir[0];
+                    int newCol = cell[1] + dir[1];
+
+                    if(newRow < grid.length && newCol < grid[0].length && newRow >=0 && newCol >=0 &&
+                            grid[newRow][newCol] >= grid[row][col] && visited[newRow][newCol]!=-index){
+
+                        queue.add(new int[]{newRow, newCol});
+                    }
+                }
+            }
+        }
     }
 }

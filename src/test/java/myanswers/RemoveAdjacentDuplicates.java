@@ -64,7 +64,39 @@ public class RemoveAdjacentDuplicates {
     public void test() {
         String s = "deeedbbcccbdaa";
 
-        System.out.println(removeDuplicates1(s, 3));
+        System.out.println(removeDuplicates3(s, 3));
 
+    }
+
+
+
+
+    public String removeDuplicates3(String s, int k) {
+        int write = -1;
+        // we will increment and write so startting with -1
+        // wrtie point to element last written
+        int read = 0;
+        char [] str = s.toCharArray();
+        int count[] = new int[s.length()];
+        while(read < s.length()){
+            if(write == -1){
+                // copy
+                str[++write] = str[read];
+                count[write]=1;
+            } else if(str[read] == str[write]){
+                str[++write] = str[read];
+                count[write] = count[write-1]+1;
+                if(count[write]==k){
+                    write = write - k;
+                }
+            } else {
+                // just copy read element to write index
+                str[++write] = str[read];
+                count[write] = 1;
+            }
+            read++;
+        }
+
+        return new String(str, 0, write+1);
     }
 }

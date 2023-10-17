@@ -2,8 +2,10 @@ package leetcode_classes;
 
 public class Node {
     public int val;
+    public int key;
     public Node left;
     public Node right;
+    public int freqCount;
 
     public Node() {}
 

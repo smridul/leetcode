@@ -20,10 +20,10 @@ public class KclosestIntegers {
         // Binary search against the criteria described
         while (left < right) {
             int mid = (left + right) / 2;
-            if (Math.abs(x - arr[mid]) > Math.abs(arr[mid + k] - x)) {
+            if (x - arr[mid] > arr[mid + k] - x) {
                 left = mid + 1;
             } else {
-                right = mid;
+                right = mid-1;
             }
         }
 
@@ -81,8 +81,8 @@ public class KclosestIntegers {
     @Test
     public void test() {
 
-        int[] arr = new int[]{1,2, 3, 4, 5};
-        List<Integer> res = findClosestElements(arr, 4, -1);
+        int[] arr = new int[]{0,2,2,3,4,6,7,8,9,9};
+        List<Integer> res = findClosestElements(arr, 4, 5);
         for (int s : res) {
             System.out.print(s + " ");
         }

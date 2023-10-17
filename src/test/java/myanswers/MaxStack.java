@@ -34,7 +34,7 @@ public class MaxStack {
     }
 
     public int top() {
-        return dll.tail.val;
+        return dll.head.val;
     }
 
     public int peekMax() {
