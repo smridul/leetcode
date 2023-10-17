@@ -20,8 +20,5 @@ public class LFUCacheTest {
         System.out.println(lfuCache.get(3));
         System.out.println(lfuCache.get(4));
 
-
-
-
     }
 }
