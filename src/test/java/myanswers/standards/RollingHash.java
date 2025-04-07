@@ -2,7 +2,7 @@ package myanswers.standards;
 
 import org.junit.Test;
 
-import java.util.HashSet;
+import java.util.*;
 
 public class RollingHash {
 
@@ -46,7 +46,7 @@ public class RollingHash {
     public int longestRepeatingSubstring(String s) {
 
         int[] nums = new int[s.length()];
-        for(int i = 0; i < s.length(); ++i) nums[i] = (int)s.charAt(i) - (int)'a';
+        for(int i = 0; i < s.length(); ++i) nums[i] = s.charAt(i) - 'a';
         // base value for the rolling hash function
         int base = 26;
         // modulus value for the rolling hash function to avoid overflow
@@ -73,5 +73,9 @@ public class RollingHash {
     public void test() {
 
         System.out.println(longestRepeatingSubstring("aaaaa"));
+
+        List<Integer> operands = new ArrayList<>();
+        int start=0;
+        List<Integer> aa=Arrays.asList(operands.get(start));
     }
 }

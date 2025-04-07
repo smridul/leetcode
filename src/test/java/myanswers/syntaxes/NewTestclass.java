@@ -12,6 +12,8 @@ public class NewTestclass {
         int a = compress(chars);
         System.out.println(a);
         System.out.println(new String(chars));
+        int ff=-123;
+        System.out.println(ff% 10);
     }
 
 
@@ -32,6 +34,7 @@ public class NewTestclass {
             currentIndex++;
         }
         return writeIndex;
+
     }
 
 

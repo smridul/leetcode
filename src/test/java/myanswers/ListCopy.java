@@ -65,9 +65,54 @@ public class ListCopy {
             current.next = currentDuplicate.next;
             prevDuplicate = currentDuplicate;
             current = currentDuplicate.next;
+
         }
         return dummy.next;
     }
+
+
+
+    public Node1 copyRandomListNew(Node1 head) {
+        Node1 oldHead = head;
+        //pass1
+        while(oldHead!=null){
+            Node1 next = oldHead.next;
+            Node1 node = new Node1(oldHead.val);
+            oldHead.next = node;
+            node.next = next;
+            oldHead = next;
+        }
+
+        // pass 2
+        oldHead = head;
+        Node1 newHead = head.next;
+
+        // for later return
+        Node1 dummy = new Node1(0);
+        dummy.next = newHead;
+
+        while(oldHead!=null){
+            newHead.random = oldHead.random!=null ? oldHead.random.next: null;
+
+            oldHead =newHead.next;
+            newHead = oldHead!=null ? oldHead.next : null;
+        }
+
+
+        oldHead = head;
+        newHead =  head.next;
+        //pass3
+        while(oldHead!=null){
+            oldHead.next = newHead.next;
+            newHead.next = oldHead.next!=null ? oldHead.next.next:null;
+            oldHead = oldHead.next;
+            newHead = newHead.next;
+        }
+
+        return dummy.next;
+
+    }
+
 
 
     @Test()
@@ -88,6 +133,7 @@ public class ListCopy {
         node4.random = node3;
         node5.random = node1;
         copyRandomListIterative(node1);
+        copyRandomListNew(node1);
     }
 }
 

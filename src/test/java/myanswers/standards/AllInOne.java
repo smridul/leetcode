@@ -201,19 +201,29 @@ public class AllInOne {
 //[[],["hello"],["hello"],["world"],["world"],["hello"],["world"],[],[],["world"],["world"],["leet"],[],[],["leet"],["leet"],[]]
 //
 
+//        inc("hello");
+//        inc("hello");
+//        inc("world");
+//        inc("world");
+//        inc("hello");
+//        dec("world");
+//        System.out.println(getMaxKey());
+//        System.out.println(getMinKey());
+
+
+
         inc("hello");
         inc("hello");
-        inc("world");
-        inc("world");
-        inc("hello");
-        dec("world");
+        System.out.println(getMaxKey());
+        System.out.println(getMinKey());
+        inc("leet");
         System.out.println(getMaxKey());
         System.out.println(getMinKey());
 
     }
 }
 
-class DllNode {
+ class DllNode {
 
     int count;
     DllNode next;

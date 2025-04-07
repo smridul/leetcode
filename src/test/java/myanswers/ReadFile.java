@@ -15,8 +15,8 @@ public class ReadFile {
 
     public static void main(String args[]) throws IOException {
 
-        String inputFilePath = "/Users/smridul/temp/final_assessment/remaining";
-        String outputFilePath = "/Users/smridul/temp/final_assessment/remaining_processed";
+        String inputFilePath = "/Users/mridulshrivastava/questions/oldsession";
+        String outputFilePath = "/Users/mridulshrivastava/questions/oldsession_processed";
 
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
@@ -49,9 +49,9 @@ public class ReadFile {
                 int index = trimmed.indexOf('.');
                 int index2 = trimmed.indexOf('%');
 
-               /* if(index!=-1 && index2==-1){
+                if(index!=-1 && index2==-1){
                     trimmed = trimmed.substring(0, index);
-                }*/
+                }
 
                 int trimmedInteger = 0;
                 try {
@@ -97,13 +97,13 @@ public class ReadFile {
     @Test
     public  void test() throws IOException {
 
-        String inputFilePath = "/Users/smridul/temp/last6month/targetCompanies/fb_google/fb_proc";
-       String inputFilePath2 = "/Users/smridul/temp/last6month/targetCompanies/fb_google/google_proc";
+        String inputFilePath = "/Users/mridulshrivastava/questions/oldsession_processed";
+       String inputFilePath2 = "/Users/mridulshrivastava/questions/done_processed";
         //String inputFilePath2 = "/Users/smridul/temp/last6month/targetCompanies/mediums/fb_dd_link_mediums_uniques";
 
 
 
-        String outputFilePath = "/Users/smridul/temp/last6month/targetCompanies/fb_google/only_fb";
+        String outputFilePath = "/Users/mridulshrivastava/questions/todo";
 
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;

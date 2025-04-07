@@ -3,9 +3,9 @@ package myanswers;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
-public class TrappingRainWater {
+public class  TrappingRainWater {
 
     public int trap2(int[] height) {
         int lmax = 0;
@@ -113,4 +113,7 @@ public class TrappingRainWater {
         int[] height = new int[]{0,1,0,2,1,0,1,3,2,1,2,1};
         System.out.println(trap2(height));
     }
+
+
+
 }

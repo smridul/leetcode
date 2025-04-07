@@ -194,7 +194,7 @@ public class BasicCalculatorParentheses {
             index++;
         }
 
-    
+
         return new Pair<>(res + sign*num, index);
     }
 }

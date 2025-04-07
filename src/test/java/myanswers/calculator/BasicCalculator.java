@@ -92,6 +92,14 @@ public class BasicCalculator {
     @Test
     public void test() {
         System.out.println(calculate2("14/3*2"));
+        StringBuilder str = new StringBuilder();
+        String data = "a";
+        String [] arr = data.split(":");
+        String  sb = "ABCDE";
+        String ss =  new String(sb.toCharArray(), 2, 2); //CD
+        String ss2 = sb.substring(2, 2);
+        int a=0;
+
 
     }
 }

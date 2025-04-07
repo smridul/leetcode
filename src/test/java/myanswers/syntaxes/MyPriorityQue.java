@@ -10,12 +10,14 @@ import java.util.PriorityQueue;
 /**
  * Created by smridul on 6/25/18.
  */
+class Point{
+    int x;
+    int y;
+}
 public class MyPriorityQue {
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void test() {
-
-
         PriorityQueue<Integer> list = new PriorityQueue<>(5);
         list.add(1);
         list.add(2);

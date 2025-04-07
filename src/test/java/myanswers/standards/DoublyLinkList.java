@@ -55,7 +55,8 @@ public class DoublyLinkList {
         if (node == tail) {
             tail = tail.left;
         }
-        node.left = null;
+        node.left = null;  //[this is imp step] because we are adding this same node at front
+        // it prev should be null. I made this mistake in interview
         node.right = null;
         size--;
     }

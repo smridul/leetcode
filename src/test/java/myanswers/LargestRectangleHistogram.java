@@ -3,6 +3,7 @@ package myanswers;
 import org.junit.Test;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 public class LargestRectangleHistogram {
@@ -52,7 +53,10 @@ public class LargestRectangleHistogram {
 
         int[] num = new int[]{3, 4, 5};
         int res = largestRectangleArea(num);
-        System.out.print(res);
+        System.out.println(res);
+
+        int x = -7;
+        System.out.println(x << 1);
 
     }
 

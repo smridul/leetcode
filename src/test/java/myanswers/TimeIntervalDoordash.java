@@ -50,7 +50,10 @@ public class TimeIntervalDoordash {
     @Test
     public void test() {
 
-        List<Integer> result = printAllTimeInBetween("sun 10:00 pm", "mon 11:00 am");
+        List<Integer> result = printAllTimeInBetween("sun 12:00 pm", "mon 11:00 am");
+        for(int i : result){
+            System.out.println(i);
+        }
         int a = 0;
 
     }
@@ -80,6 +83,7 @@ class TimeInterval implements Comparable<TimeInterval>{
         days = daysMap.get(parts[0]);
         hours = Integer.parseInt(parts[1].split(":")[0]);
         minutes = Integer.parseInt(parts[1].split(":")[1]);
+        hours = hours %12;
         if ("pm".equals(parts[2])) {
             hours = hours + 12;
         }
